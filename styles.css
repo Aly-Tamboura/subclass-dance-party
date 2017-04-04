@@ -25,3 +25,13 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.circle{
+  height: 65px;
+  width: 100px;
+  border: none;
+  transform:rotate(7deg);
+  background-image: url("src/fireball.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
