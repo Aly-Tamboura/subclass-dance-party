@@ -12,3 +12,13 @@ CircleDancer.prototype.step = function() {
   this.rotation += 5;
   this.$node.css( 'transform', 'rotate(' + this.rotation + 'deg)' );
 }
+
+CircleDancer.prototype.lineUp = function() {
+  var dancers = window.dancers;
+  var circleDancers = dancers.filter( function(dancer) {
+    return (dancer.constructor === CircleDancer);
+  });
+  circleDancers.forEach( function(item, idx) {
+    item.$node.css({'top': idx * 50, 'left': idx * 50});
+  });
+}

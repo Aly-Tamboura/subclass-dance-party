@@ -4,6 +4,9 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url("images/tron.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -20,18 +23,32 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
+  position:absolute;  
+}
+
+.blinky{
+  height: 50px;
+  width: 50px;
+  background-image: url("images/ghost.gif");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .circle{
-  height: 65px;
-  width: 100px;
-  border: none;
+  height: 80px;
+  width: 80px;
   transform:rotate(7deg);
-  background-image: url("images/fireball.png");
+  background-image: url("images/ball.gif");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.bouncy{
+  height: 125px;
+  width: 100px;
+  background-image: url("images/alien.gif");
   background-size: 100%;
   background-repeat: no-repeat;
 }

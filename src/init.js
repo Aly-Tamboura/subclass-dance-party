@@ -4,10 +4,9 @@ $(document).ready(function() {
   $('#lineUpButton').on('click', function() {
     // for every dancer object
       // dancer.lineUp( x );
-    var $dancers = $(window.dancers);
-    $.each( $dancers, function(idx, item) {
-      item.css({'top': idx * 50, 'left': idx * 50});
-    });
+    CircleDancer.prototype.lineUp();
+    // BouncyDancer.prototype.lineUp();
+    BlinkyDancer.prototype.lineUp();
   });
 
 
@@ -37,7 +36,7 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    window.dancers.push(dancer.$node);
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
 });

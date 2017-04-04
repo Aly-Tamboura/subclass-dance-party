@@ -26,6 +26,9 @@ Dancer.prototype.setPosition = function(top, left) {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
   //
+  this.left = left;
+  this.top = top;
+
   var styleSettings = {
     top: top,
     left: left
@@ -33,8 +36,8 @@ Dancer.prototype.setPosition = function(top, left) {
   this.$node.css(styleSettings);
 };
 
-Dancer.prototype.travelTo = function(newTop, newLeft, pixelsPerSecond) {
-  var pixelDistance = Math.sqrt( Math.pow(newTop - top, 2) + Math.pow(newLeft - left, 2) );
-  var travelTime = pixelDistance / pixelsPerSecond;
-  this.$node.animate( { 'top': newTop, 'left': newLeft }, travelTime );
-};
+// Dancer.prototype.travelTo = function(newTop, newLeft, pixelsPerSecond) {
+//   var pixelDistance = Math.sqrt( Math.pow(newTop - top, 2) + Math.pow(newLeft - left, 2) );
+//   var travelTime = pixelDistance / pixelsPerSecond;
+//   this.$node.animate( { 'top': newTop, 'left': newLeft }, travelTime );
+// };

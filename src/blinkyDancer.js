@@ -1,7 +1,9 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
+  timeBetweenSteps *= 4;
   Dancer.call( this, top, left, timeBetweenSteps );
+  this.$node.addClass( 'blinky' );
 };
 
 BlinkyDancer.prototype = Object.create( Dancer.prototype );
@@ -16,3 +18,14 @@ BlinkyDancer.prototype.step = function() {
   // other effects you can use on a jQuery-wrapped html tag.
   this.$node.toggle();
 };
+
+BlinkyDancer.prototype.lineUp = function() {
+  var dancers = window.dancers;
+  var blinkyDancers = dancers.filter( function(dancer) {
+    return (dancer.constructor === BlinkyDancer);
+  });
+  var windowWidth = $('body').css('width').slice(0,-2);
+  blinkyDancers.forEach( function(item, idx) {
+    item.$node.css({'top': idx * 50, 'left': windowWidth - (idx * 50)});
+  });
+}
