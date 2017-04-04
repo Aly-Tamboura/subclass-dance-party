@@ -1,5 +1,15 @@
 $(document).ready(function() {
   window.dancers = [];
+  
+  $('#lineUpButton').on('click', function() {
+    // for every dancer object
+      // dancer.lineUp( x );
+    var $dancers = $(window.dancers);
+    $.each( $dancers, function(idx, item) {
+      item.css({'top': idx * 50, 'left': idx * 50});
+    });
+  });
+
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -27,7 +37,7 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer.$node);
     $('body').append(dancer.$node);
   });
 });
-
