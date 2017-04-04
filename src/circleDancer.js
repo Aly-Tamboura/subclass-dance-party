@@ -9,6 +9,6 @@ CircleDancer.prototype.constructor = CircleDancer;
 
 CircleDancer.prototype.step = function() {
 	Dancer.prototype.step.call( this );
-  this.$node.css( 'transform', 'rotate(' + this.rotation + 'deg)' );
   this.rotation += 5;
+  this.$node.css( 'transform', 'rotate(' + this.rotation + 'deg)' );
 }

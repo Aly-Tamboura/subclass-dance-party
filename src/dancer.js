@@ -32,3 +32,9 @@ Dancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+Dancer.prototype.travelTo = function(newTop, newLeft, pixelsPerSecond) {
+  var pixelDistance = Math.sqrt( Math.pow(newTop - top, 2) + Math.pow(newLeft - left, 2) );
+  var travelTime = pixelDistance / pixelsPerSecond;
+  this.$node.animate( { 'top': newTop, 'left': newLeft }, travelTime );
+};
