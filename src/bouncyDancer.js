@@ -3,9 +3,11 @@ var BouncyDancer = function( top, left, timeBetweenSteps ) {
   this.isSeekingTargets = true;
   this.target = this.chooseTarget();
   Dancer.call( this, top, left, timeBetweenSteps );
-  this.timeBetweenSteps /= 3;
+  this.timeBetweenSteps /= 4;
   this.$node.addClass( 'bouncy' );
-
+  
+  var seekTargets = function() { this.isSeekingTargets = true; }
+  this.$node.on('mouseover', seekTargets.bind(this) );
 };
 
 BouncyDancer.prototype = Object.create( Dancer.prototype );
@@ -37,10 +39,12 @@ BouncyDancer.prototype.step = function() {
    //if at taget choose new target
     //if this dancer location is within 5px of target
   if (this.isSeekingTargets === false) {
-    debugger;
+    // debugger;
   }
-  if ( this.isSeekingTargets && Math.abs(this.target.top - this.top) <= 5 && Math.abs(this.target.left - this.left) <=5 ) {
-    this.target = this.chooseTarget();
+  if (  Math.abs(this.target.top - this.top) <= 5 && Math.abs(this.target.left - this.left) <=5 ) {
+    if ( this.isSeekingTargets ) {    
+      this.target = this.chooseTarget();
+    }
   } else {
     this.setPosition((this.top + vertStep), (this.left + horzStep));
   }
@@ -72,9 +76,9 @@ BouncyDancer.prototype.lineUp = function() {
     //disable target seeking
     item.isSeekingTargets = false;
     //horizontal position is the center of screen
-    item.target.left = width;
-    // vertical index * 50 from top
-    item.target.top = (idx  * 50 + 50);
+    // vertical index * 5a0 from top
+    item.target = {left: width, top: (idx  * 50 + 50)};
+    // item.setPosition((idx * 50 + 50), width);
     //set this dancers target to new position
   });
 };
