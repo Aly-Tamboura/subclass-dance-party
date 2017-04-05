@@ -1,9 +1,11 @@
 var BouncyDancer = function( top, left, timeBetweenSteps ) {
   // debugger;
+  this.isSeekingTargets = true;
   this.target = this.chooseTarget();
   Dancer.call( this, top, left, timeBetweenSteps );
   this.timeBetweenSteps /= 3;
   this.$node.addClass( 'bouncy' );
+
 };
 
 BouncyDancer.prototype = Object.create( Dancer.prototype );
@@ -34,36 +36,64 @@ BouncyDancer.prototype.step = function() {
 
    //if at taget choose new target
     //if this dancer location is within 5px of target
-  if ( Math.abs(this.target.top - this.top) <= 5 && Math.abs(this.target.left - this.left) <=5 ) {
+  if (this.isSeekingTargets === false) {
+    debugger;
+  }
+  if ( this.isSeekingTargets && Math.abs(this.target.top - this.top) <= 5 && Math.abs(this.target.left - this.left) <=5 ) {
     this.target = this.chooseTarget();
   } else {
     this.setPosition((this.top + vertStep), (this.left + horzStep));
   }
 
 };
-//
-BouncyDancer.prototype.chooseTarget = function() {
-  //pick random dancer from dancer array
-  var randNum = Math.floor(Math.random() * window.dancers.length);
 
-  var pickedDancer = window.dancers[randNum];
-  if(window.dancers.length < 2) {return {top: 100, left: 500}};
-    //if pics itself choose another dancer
-    do {
-      var randNum = Math.floor(Math.random() * window.dancers.length);
-      pickedDancer = window.dancers[randNum];
-    }
-    while(pickedDancer === this);
-    //return the chosen dancer
-    return pickedDancer;
+BouncyDancer.prototype.chooseTarget = function() {
+  if(window.dancers.length < 2) {
+    return {top: 100, left: 500}
+  };
+
+  //if pics itself choose another dancer
+  do {
+    var randNum = Math.floor(Math.random() * window.dancers.length);
+    pickedDancer = window.dancers[randNum];
+  }
+  while(pickedDancer === this);
+
+  return pickedDancer;
 };
 
 BouncyDancer.prototype.lineUp = function() {
+  var width = $('body').css('width').slice(0, -2) / 2;
   var dancers = window.dancers;
   var bouncyDancer = dancers.filter( function(dancer) {
     return (dancer.constructor === BouncyDancer);
   });
   bouncyDancer.forEach( function(item, idx) {
-    item.$node.css({'top': idx * 50, 'left': idx * 50});
+    //disable target seeking
+    item.isSeekingTargets = false;
+    //horizontal position is the center of screen
+    item.target.left = width;
+    // vertical index * 50 from top
+    item.target.top = (idx  * 50 + 50);
+    //set this dancers target to new position
   });
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

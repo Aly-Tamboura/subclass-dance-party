@@ -5,7 +5,7 @@ $(document).ready(function() {
     // for every dancer object
       // dancer.lineUp( x );
     CircleDancer.prototype.lineUp();
-    // BouncyDancer.prototype.lineUp();
+    BouncyDancer.prototype.lineUp();
     BlinkyDancer.prototype.lineUp();
   });
 

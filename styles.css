@@ -25,7 +25,7 @@ body, a:link, a:visited, a:active{
 }
 
 .dancer{
-  position:absolute;  
+  position: absolute;  
 }
 
 .blinky{
@@ -39,7 +39,6 @@ body, a:link, a:visited, a:active{
 .circle{
   height: 80px;
   width: 80px;
-  transform:rotate(7deg);
   background-image: url("images/ball.gif");
   background-size: 100%;
   background-repeat: no-repeat;

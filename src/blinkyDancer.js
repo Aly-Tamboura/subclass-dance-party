@@ -26,6 +26,6 @@ BlinkyDancer.prototype.lineUp = function() {
   });
   var windowWidth = $('body').css('width').slice(0,-2);
   blinkyDancers.forEach( function(item, idx) {
-    item.$node.css({'top': idx * 50, 'left': windowWidth - (idx * 50)});
+    item.$node.css({'top': idx * 50 + 50, 'left': windowWidth - (idx * 50)});
   });
 }

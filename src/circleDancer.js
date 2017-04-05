@@ -19,6 +19,6 @@ CircleDancer.prototype.lineUp = function() {
     return (dancer.constructor === CircleDancer);
   });
   circleDancers.forEach( function(item, idx) {
-    item.$node.css({'top': idx * 50, 'left': idx * 50});
+    item.$node.css({'top': idx * 50 + 50, 'left': idx * 50});
   });
 }
